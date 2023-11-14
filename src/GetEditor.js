@@ -23,6 +23,7 @@ export function GetEditor({onCreate, lastID, onCancel}) {
             <input type="text" value={title} onChange={e => setTitle(e.target.value)}
                    onClick={_ => {if (title === "your title") {setTitle("")}}}
             onBlur={_ => {
+                // guarda quà
                 if (title===""){setTitle("your title");}
             }}/>
         </label>
@@ -30,6 +31,7 @@ export function GetEditor({onCreate, lastID, onCancel}) {
             <textarea value={body} cols="30" rows="10" onChange={e => setBody(e.target.value)}
                       onFocus={_ => {if (body === "your Text") {setBody("")}}}
                       onBlur={_ => {
+                          // guarda quà
                           if (body===""){setBody("your Text");}
                       }}
             >{body}</textarea>
