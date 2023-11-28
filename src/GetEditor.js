@@ -24,7 +24,7 @@ export function GetEditor({onCreate, lastID, onCancel}) {
                    onClick={_ => {if (title === "your title") {setTitle("")}}}
             onBlur={_ => {
                 // guarda quà
-                if (title===""){setTitle("your title");}
+                if (!title){setTitle("your title");}
             }}/>
         </label>
         <label>
@@ -32,7 +32,7 @@ export function GetEditor({onCreate, lastID, onCancel}) {
                       onFocus={_ => {if (body === "your Text") {setBody("")}}}
                       onBlur={_ => {
                           // guarda quà
-                          if (body===""){setBody("your Text");}
+                          if (!body){setBody("your Text");}
                       }}
             >{body}</textarea>
         </label>

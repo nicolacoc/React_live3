@@ -4,9 +4,12 @@ import {PostList} from "./PostList";
 import * as Consts from "./Consts";
 import {GetEditor} from "./GetEditor";
 import {mockPosts} from "./MockPosts";
+import {SearchPost} from "./SearchPost";
 
 export function Blog() {
+
     const [posts, setPosts] = useState(mockPosts);
+    const [viewPost, setViewPost] = useState(posts)
     const [view, setView] = useState(Consts.LISTS)
 
 
@@ -22,9 +25,22 @@ export function Blog() {
         onCancel={_=>setView(Consts.LISTS)}/>
     }
 
+    let onSearchOnPostChange= (p)=>{
+       const FilterPost = posts.filter(x=> {
+           if(p.target.value) {
+               if (x.title.toLowerCase().startsWith(p.target.value.toLowerCase()) ) {
+                   return x
+               }
+               return null
+           }
+            return x
+        })
+        setViewPost(FilterPost);
+    };
     return <>
         <button onClick={onClickHeader}>add Posts</button>
-        <PostList posts={posts}/>
+        <SearchPost onChange={onSearchOnPostChange}/>
+        <PostList posts={viewPost}/>
         </>
 }
 
